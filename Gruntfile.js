@@ -48,7 +48,9 @@ module.exports = function (grunt) {
             }
         }, 'gh-pages': {
             options: {
-                base: 'src'
+                base: 'src',
+                branch: 'master',
+                repo: 'https://github.com/judg3/judg3.github.io.git'
             },
             src: ['**']
         }
