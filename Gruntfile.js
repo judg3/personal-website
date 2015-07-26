@@ -29,7 +29,8 @@ module.exports = function (grunt) {
                 ],
                 dest: 'src/dist/built.css',
             }
-        },copy: {
+        },
+        copy: {
             dist: {
                 files: [{
                     expand: true,
@@ -45,7 +46,12 @@ module.exports = function (grunt) {
                     dest: 'src'
                 }]
             }
-    }
+        }, 'gh-pages': {
+            options: {
+                base: 'src'
+            },
+            src: ['**']
+        }
     });
     grunt.loadNpmTasks('grunt-serve');
 
@@ -53,7 +59,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
-
-    grunt.registerTask('default', ['jshint']);
+    grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.registerTask('default', ['jshint','concat','copy']);
 
 };
