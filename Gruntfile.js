@@ -50,7 +50,8 @@ module.exports = function (grunt) {
             options: {
                 base: 'src',
                 branch: 'master',
-                repo: 'https://github.com/judg3/judg3.github.io.git'
+                repo: 'https://github.com/judg3/judg3.github.io.git',
+                only: ['**/*', '!README.md']
             },
             src: ['**']
         }
@@ -62,6 +63,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-gh-pages');
-    grunt.registerTask('default', ['jshint','concat','copy']);
+    grunt.registerTask('default', ['concat','copy']);
 
 };
