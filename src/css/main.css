@@ -186,11 +186,11 @@ a:focus {
     min-height: 100%;
 }
 
-@media (min-height: 850px) {
+@media (min-height: 950px) {
     .content-section {
-        padding-top: 150px;
+        padding-top: 200px;
         padding-bottom: 40px;
-        min-height: auto;
+        min-height: 1000px;
     }
     h1{
         font-size: 40px;
@@ -254,7 +254,6 @@ body {
 }
 
 #home{
-    padding-top: 150px;
     background: #29475F url("../img/talks.png") no-repeat bottom right;
 }
 
@@ -348,6 +347,9 @@ body {
 @media (max-width: 991px) {
     .home__languages p {
         text-align: left;
+    }
+    .content-section{
+        padding-top: 130px;
     }
 }
 
@@ -450,7 +452,7 @@ body {
 /*Contact Page*/
 /*****************/
 #contact {
-    height: auto;
+    height: 700px;
     background-image: url("../img/berlin.png");
     background-repeat: no-repeat;
     background-position: bottom center;
