@@ -8,10 +8,33 @@
 $(window).scroll(function () {
     if ($(".navbar").offset().top > 50) {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
+        changeHashSilent($(".navbar-fixed-top li.active a").attr('href'));
     } else {
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
     }
 });
+
+function changeHashSilent(hash)
+{
+    hash = hash.replace( /^#/, '' );
+    var fx, node = $( '#' + hash );
+    if ( node.length ) {
+        node.attr( 'id', '' );
+        fx = $( '<div></div>' )
+            .css({
+                position:'absolute',
+                visibility:'hidden',
+                top: $(document).scrollTop() + 'px'
+            })
+            .attr( 'id', hash )
+            .appendTo( document.body );
+    }
+    document.location.hash = hash;
+    if ( node.length ) {
+        fx.remove();
+        node.attr( 'id', hash );
+    }
+}
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function () {
@@ -28,24 +51,7 @@ $(function () {
          */
         var hash = $anchor.attr('href');
 
-        hash = hash.replace( /^#/, '' );
-        var fx, node = $( '#' + hash );
-        if ( node.length ) {
-            node.attr( 'id', '' );
-            fx = $( '<div></div>' )
-                .css({
-                    position:'absolute',
-                    visibility:'hidden',
-                    top: $(document).scrollTop() + 'px'
-                })
-                .attr( 'id', hash )
-                .appendTo( document.body );
-        }
-        document.location.hash = hash;
-        if ( node.length ) {
-            fx.remove();
-            node.attr( 'id', hash );
-        }
+        changeHashSilent(hash);
     });
 
     $(window).bind('scroll', function() {
